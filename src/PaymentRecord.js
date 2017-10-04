@@ -5,6 +5,8 @@ import Lightbox from './Lightbox';
 
 import Navigation from './Navigation';
 
+const ROOT_URL = 'https://polar-reaches-38614.herokuapp.com';
+
 class PaymentRecord extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class PaymentRecord extends Component {
 
   searchRecord = (e)=>{
     e.preventDefault();
-    axios.post('http://localhost:8000/record', {
+    axios.post(`${ROOT_URL}/record`, {
       first_name: this.refs.first_name.value,
       last_name: this.refs.last_name.value,
       id: this.refs.id.value
