@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Text, Select, FormError } from 'react-form'
+import { Form, Text, Select } from 'react-form'
 import { Redirect } from 'react-router-dom';
 import validator from 'validator';
 import axios from 'axios';
@@ -11,7 +11,16 @@ import Lightbox from './Lightbox';
 let createClient = require('braintree-web/client').create;
 let creditCardType = require('credit-card-type');
 
-let fx = require('./fx');
+// helper for converting currency
+// TODO: in the future, uses real time exchange rate 
+// OR configure multiple BrainTree merchant account to accept different currencies
+let fx = require('money');
+fx.base = 'USD';
+fx.rates = {
+  'CNY': 6.64279688,
+  'JPY': 113.083795,
+  'HKD': 7.8116456
+};
 
 const CARD_TYPE_MAP = {
   'visa'            : 'visa',
@@ -21,7 +30,8 @@ const CARD_TYPE_MAP = {
   'discover'        : 'discover'
 }
 
-const ROOT_URL = 'http://localhost:8000';
+// const ROOT_URL = 'http://localhost:8000';
+const ROOT_URL = 'https://polar-reaches-38614.herokuapp.com';
 
 class App extends Component {
   constructor(props) {
