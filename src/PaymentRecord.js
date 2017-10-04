@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Lightbox from './Lightbox';
+
 import Navigation from './Navigation';
 
 class PaymentRecord extends Component {
   constructor(props) {
     super(props);
-    this.state = { record: '' }
+    this.state = { 
+      record: '',
+      errorMessage: ''
+    }
   }
 
   searchRecord = (e)=>{
@@ -18,7 +23,13 @@ class PaymentRecord extends Component {
     }).then((result)=>{
       if (result.status === 200)
         this.setState({ record: result.data })
+    }).catch((err)=>{
+      this.setState({ errorMessage: 'Error: ' + err.response.data })
     })
+  }
+
+  resetError = ()=>{
+    this.setState({ errorMessage: '' })
   }
 
   render() {
@@ -28,6 +39,11 @@ class PaymentRecord extends Component {
         <Navigation />
 
         <h2>Search for payment record</h2>
+
+        { this.state.errorMessage &&
+          <Lightbox message={this.state.errorMessage} reset={this.resetError} />
+        }
+
         <form>
           <div className="form-group">
             <label >First Name</label>

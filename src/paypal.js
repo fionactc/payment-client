@@ -96,10 +96,6 @@ class PayPal extends Component {
     })
   }
   
-  successRedirect = ()=>{
-    console.log('this is context', this.context.router);
-  }
-
   payWithBrainTree = ()=>{
     console.log('Paying with BrainTree...')
 

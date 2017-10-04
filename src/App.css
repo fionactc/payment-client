@@ -2,3 +2,24 @@
   margin: 30px auto;
   max-width: 500px;
 }
+
+.FormError, .tip {
+  color: crimson;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 000;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+.lightbox h2 {
+  color: white;
+  height: 100%;
+  margin: 400px 0;
+}
