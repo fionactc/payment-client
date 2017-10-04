@@ -8,6 +8,25 @@ Server Repo: [HERE](https://github.com/fionactc/payment-server)
 
 Client Repo: [HERE](https://github.com/fionactc/payment-client)
 
+### Data Structure
+Payment record on Redis contains:
+
+|| description | type
+|---|---|---
+| key | Payment ID from PayPal or BrainTree | String
+| value | Payment information | Object (Stringify when saved to Redis)
+
+Payment Information Object:
+
+|attribute | type |
+|---|---|
+|firstName | String |
+|lastName | String |
+|phone | String |
+|currency | String |
+|amount | String |
+
+
 ### Technical Choices
 - ReactJS: for frontend view
 - Node.js: Javascript on server side
