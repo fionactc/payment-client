@@ -118,7 +118,7 @@ class App extends Component {
                 phone: values.number
               }
 
-              axios.post('http://localhost:8000/braintree/checkout', {
+              axios.post(`${ROOT_URL}/braintree/checkout`, {
                 nonce,
                 amount,
                 customer
