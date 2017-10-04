@@ -52,7 +52,9 @@ As required, this app should decide whether to pay through PAYPAL or BRAINTREE w
 
 In order to reach the requirement, this solution uses a custom form to collect user data and credit card, then send to the server code and then send to PayPal. The down sides to this approach is that sending user's credit card to our own server seems to be violating security compliance for handling payment data. It is also difficult to use predesigned forms from PayPal or BrainTree which could save us a lot of trouble in security, validation etc. This solution simply uses `POST` request and SSL to pass data between server and client. Due to time constraint I did not investigate more on enhancing security.
 
-Also PayPal somehow rejects American Express card and I could not find the corresponding configuration. I leave the logic for using PayPal for AMEX in the code but in this version it would return error from server.
+Other limitations that does not reach requirement: 
+- PayPal somehow rejects American Express card and I could not find the corresponding configuration. I leave the logic for using PayPal for AMEX in the code but in this version it would return error from server.
+- BrainTree does not accept multiple currencies with one merchant account. Right now my solution uses a static exchange rate to convert payment amount to USD. If I were to keep working on this project, I would either setup multiple BrainTree merchant account that accepts different currencies or uses realtime exchange rate for conversion
 
 Other possible improvements to this solution include:
 - Better form validation
